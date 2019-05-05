@@ -8,8 +8,10 @@ defmodule Duper.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Starts a worker by calling: Duper.Worker.start_link(arg)
-      # {Duper.Worker, arg}
+      Duper.Results,
+      {Duper.PathFinder, "/Users/yukhom/Documents/Books/Psychology"},
+      Duper.WorkerSupervisor,
+      {Duper.Gatherer, 4},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
